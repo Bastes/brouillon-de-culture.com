@@ -3,6 +3,9 @@
 
 class ApplicationController < ActionController::Base
   helper :all
+
+  helper_method :is_admin?
+
   protect_from_forgery
 
   filter_parameter_logging :login, :password
@@ -16,7 +19,10 @@ class ApplicationController < ActionController::Base
   end
 
   def is_admin? login = nil, password = nil
-    if params[:login] and admin params[:password]
+		if login and password
+      session[:login]    = login
+      session[:password] = password
+    elsif params[:login] and params[:password]
       session[:login]    = params[:login]
       session[:password] = params[:password]
     end

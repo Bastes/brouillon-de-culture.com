@@ -7,4 +7,8 @@ module ApplicationHelper
       @title.call
     end
   end
+
+  def admin_area &block
+    yield if is_admin?
+  end
 end

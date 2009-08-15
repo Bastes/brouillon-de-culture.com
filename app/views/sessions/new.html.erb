@@ -1,5 +1,5 @@
 <% title { t :identification } %>
-<% form_tag '/sessions', :method => 'put' do -%>
+<% form_tag(url_for(:controller => :sessions, :action => :create)) do -%>
   <div>
     <%= label_tag :login, t(:login) %>
     <%= text_field_tag :login %>

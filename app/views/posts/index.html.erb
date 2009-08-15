@@ -1,0 +1,11 @@
+<% title { t(:posts) } %>
+<ul>
+  <% for post in @posts -%>
+    <li>
+      <%= link_to "#{post.title}", post %>
+      <%= admin_area { link_to t(:edit), edit_post_path(post) } %>
+      <%= admin_area { link_to t(:delete), post_path(post), :method => :delete } %>
+    </li>
+  <% end -%>
+</ul>
+<%= admin_area { link_to t(:new), new_post_path } %>

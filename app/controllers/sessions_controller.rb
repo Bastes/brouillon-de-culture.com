@@ -6,6 +6,7 @@ class SessionsController < ApplicationController
 
   def create
     flash[:notice] = t(:admin_welcome)
+		redirect_to posts_path
   end
 
   def destroy
