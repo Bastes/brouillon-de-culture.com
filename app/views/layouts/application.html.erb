@@ -5,6 +5,10 @@
     <%= stylesheet_link_tag 'application', :media => 'screen' %>
   </head>
   <body>
+    <h1><%= title %></h1>
+    <% if flash[:notice] -%>
+      <div id="notices"><%= flash[:notice] %></div>
+    <% end -%>
     <%= yield %>
   </body>
 </html>
