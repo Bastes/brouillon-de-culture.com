@@ -11,4 +11,9 @@ module ApplicationHelper
   def admin_area &block
     yield if is_admin?
   end
+
+  def translate_with_scope value
+    t value, :scope => [:views, self.controller_name]
+  end
+  alias :tws :translate_with_scope
 end

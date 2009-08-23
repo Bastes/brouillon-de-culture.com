@@ -1,14 +1,14 @@
 <% form_for post do |f| -%>
-	<%= f.error_messages %>
-	<div>
-		<%= f.label :title, t(:title) %>
-		<%= f.text_field :title %>
-	</div>
-	<div>
-		<%= f.label :text, t(:text) %>
-		<%= f.text_area :text %>
-	</div>
-	<div>
-		<%= f.submit t(post.new_record? ? :create : :update) %>
-	</div>
+        <%= f.error_messages %>
+        <div>
+                <%= f.label :title %>
+                <%= f.text_field :title %>
+        </div>
+        <div>
+                <%= f.label :text %>
+                <%= f.text_area :text %>
+        </div>
+        <div>
+                <%= f.submit t(post.new_record? ? :create : :update) %>
+        </div>
 <% end -%>

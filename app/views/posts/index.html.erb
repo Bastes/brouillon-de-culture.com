@@ -1,10 +1,10 @@
-<% title { t(:posts) } %>
+<% title { t('activerecord.models.post').pluralize.capitalize } %>
 <ul>
   <% for post in @posts -%>
     <li>
       <%= link_to "#{post.title}", post %>
       <%= admin_area { link_to t(:edit), edit_post_path(post) } %>
-      <%= admin_area { link_to t(:delete), post_path(post), :method => :delete } %>
+      <%= admin_area { link_to t(:remove), remove_post_path(post) } %>
     </li>
   <% end -%>
 </ul>

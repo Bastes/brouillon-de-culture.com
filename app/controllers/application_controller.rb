@@ -12,19 +12,29 @@ class ApplicationController < ActionController::Base
 
   protected
 
+  def done action
+    flash[:notice] = t('messages.' + action + 'd',
+                       :model => t('activerecord.models.' + model_name))
+  end
+
+  def model_name
+    self.controller_name.singularize
+  end
+
   def logout
     session[:login]    = nil
     session[:password] = nil
+    flash[:notice] = t(:logged_out, :scope => :messages)
     redirect_to login_path
   end
 
-  def is_admin? login = nil, password = nil
-		if login and password
-      session[:login]    = login
-      session[:password] = password
-    elsif params[:login] and params[:password]
+  def is_admin?
+    if params[:login] and params[:password]
       session[:login]    = params[:login]
       session[:password] = params[:password]
+      if ADMIN_LOGIN == session[:login] and ADMIN_PASSWORD == session[:password]
+        flash[:notice] = t(:logged_in, :scope => :messages)
+      end
     end
     ADMIN_LOGIN == session[:login] and ADMIN_PASSWORD == session[:password]
   end

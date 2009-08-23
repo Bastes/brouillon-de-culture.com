@@ -1,14 +1,14 @@
-<% title { t :identification } %>
+<% title { tws(:identification).capitalize } %>
 <% form_tag(url_for(:controller => :sessions, :action => :create)) do -%>
   <div>
-    <%= label_tag :login, t(:login) %>
+    <%= label_tag :login, tws(:login) %>
     <%= text_field_tag :login %>
   </div>
   <div>
-    <%= label_tag :password, t(:password) %>
+    <%= label_tag :password, tws(:password) %>
     <%= password_field_tag :password %>
   </div>
   <div>
-    <%= submit_tag t(:log_in) %>
+    <%= submit_tag tws(:log_in) %>
   </div>
 <% end -%>
