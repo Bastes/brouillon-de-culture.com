@@ -1,0 +1,7 @@
+fr:
+  views:
+    sessions:
+      identification: "identification"
+      login: "identifiant"
+      password: "mot de passe"
+      log_in: "connexion"

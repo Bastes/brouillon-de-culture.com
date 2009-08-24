@@ -1,0 +1,7 @@
+fr:
+  messages:
+    logged_in: "bienvenue"
+    logged_out: "au revoir"
+    created: "{{model}} créé"
+    updated: "{{model}} mis à jour"
+    deleted: "{{model}} supprimé"

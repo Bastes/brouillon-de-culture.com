@@ -1,0 +1,8 @@
+fr:
+  activerecord:
+    models:
+      post: "article"
+    attributes:
+      post:
+        title: "titre"
+        text: "texte"
