@@ -5,3 +5,4 @@ fr:
       login: "identifiant"
       password: "mot de passe"
       log_in: "connexion"
+      log_out: "déconnexion"

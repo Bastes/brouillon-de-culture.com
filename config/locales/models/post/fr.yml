@@ -2,6 +2,7 @@ fr:
   activerecord:
     models:
       post: "article"
+      posts: "articles"
     attributes:
       post:
         title: "titre"

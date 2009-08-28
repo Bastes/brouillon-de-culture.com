@@ -1,6 +1,7 @@
 fr:
   'yes': "oui"
   'no': "non"
+  back: "retour"
   new: "nouveau"
   edit: "éditer"
   remove: "supprimer"

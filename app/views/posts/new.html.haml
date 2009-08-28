@@ -1,0 +1,3 @@
+- title { "#{t('activerecord.models.post').capitalize} : #{t(:new)} " }
+= render :partial => 'form', :locals => { :post => @post }
+%div= link_to t(:back), posts_path

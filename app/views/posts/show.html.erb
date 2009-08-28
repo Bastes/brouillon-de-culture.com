@@ -1,6 +1,0 @@
-<% title { @post.title } %>
-<div>
-        <%= @post.text %>
-</div>
-<%= admin_area { link_to t(:edit), edit_post_path(@post) } %>
-<%= admin_area { link_to t(:remove), remove_post_path(@post) } %>
