@@ -1,4 +1,6 @@
+- title { "#{t('activerecord.models.post').capitalize} : #{t(:remove)} " }
 %h2= tws :remove_confirmation
 - form_for @post, :html => { :method => 'delete' } do |f|
   = submit_tag t(:yes)
   = submit_tag t(:no), :name => 'cancel'
+%div= link_to t(:back), @post
