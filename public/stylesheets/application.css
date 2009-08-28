@@ -1,0 +1,21 @@
+* {
+  font-family: Verdana;
+}
+
+a,
+a:link,
+a:visited,
+a:hover,
+a:active {
+  color: inherit;
+}
+
+#menu {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+#menu li {
+  display: inline;
+}
