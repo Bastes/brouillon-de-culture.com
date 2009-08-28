@@ -2,6 +2,9 @@
   %head
     %title= title
     = javascript_include_tag 'jquery-1.3.2.min'
+    <!--[if IE 6]>
+    = javascript_include_tag 'killie6'
+    <![endif]-->
     = stylesheet_link_tag 'application', :media => 'screen'
   %body
     %ul#menu
