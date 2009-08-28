@@ -1,0 +1,8 @@
+- title { t('activerecord.models.posts').capitalize }
+%ul
+  - for post in @posts
+    %li
+      = link_to "#{post.title}", post
+      = admin_area { link_to t(:edit), edit_post_path(post) }
+      = admin_area { link_to t(:remove), remove_post_path(post) }
+= admin_area { link_to t(:new), new_post_path }

@@ -1,5 +1,0 @@
-<h2><%= tws :remove_confirmation %></h2>
-<% form_for @post, :html => { :method => 'delete' } do |f| -%>
-  <%= submit_tag t(:yes) %>
-  <%= submit_tag t(:no), :name => 'cancel' %>
-<% end -%>

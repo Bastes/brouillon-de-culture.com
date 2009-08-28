@@ -1,0 +1,9 @@
+- form_for post do |f|
+  = f.error_messages
+  %p
+    = f.label :title
+    = f.text_field :title
+  %p
+    = f.label :text
+    = f.text_area :text
+  %p= f.submit t(post.new_record? ? :create : :update)
