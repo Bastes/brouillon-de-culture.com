@@ -12,15 +12,6 @@ class ApplicationController < ActionController::Base
 
   protected
 
-  def done action
-    flash[:notice] = t('messages.' + action + 'd',
-                       :model => t('activerecord.models.' + model_name))
-  end
-
-  def model_name
-    self.controller_name.singularize
-  end
-
   def logout
     session[:login]    = nil
     session[:password] = nil
