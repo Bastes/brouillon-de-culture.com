@@ -1,0 +1,8 @@
+fr:
+  activerecord:
+    models:
+      keyword: "mot-cle"
+      keywords: "mots-cle"
+    attributes:
+      keyword:
+        word: "mot"

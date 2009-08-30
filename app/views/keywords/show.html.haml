@@ -1,0 +1,5 @@
+- title { @keyword.word }
+%div
+  = admin_area { link_to t(:edit), edit_keyword_path(@keyword) }
+  = admin_area { link_to t(:remove), remove_keyword_path(@keyword) }
+%div= link_to t(:back), keywords_path

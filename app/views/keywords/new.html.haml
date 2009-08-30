@@ -1,0 +1,3 @@
+-title { "#{t('activerecord.models.keyword').capitalize} : #{t(:new)}" }
+= render :partial => 'form', :locals => { :keyword => @keyword }
+%div= link_to t(:back), keywords_path

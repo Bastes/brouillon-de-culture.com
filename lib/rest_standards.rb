@@ -55,6 +55,8 @@ module RestStandards
       @item = eval "@#{model_name} = #{model_class_name}.find(params[:id])"
     elsif params[model_name.to_sym]
       @item = eval "@#{model_name} = #{model_class_name}.new params[:#{model_name}]"
+    elsif params[:action] == 'new'
+      @item = eval "@#{model_name} = #{model_class_name}.new"
     else
       @item = nil
     end

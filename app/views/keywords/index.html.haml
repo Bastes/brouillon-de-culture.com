@@ -1,0 +1,8 @@
+- title { t('activerecord.models.keywords').capitalize }
+%ul
+  - for keyword in @keywords
+    %li
+      %h2= link_to "#{keyword.word}", keyword
+      = admin_area { link_to t(:edit), edit_keyword_path(keyword) }
+      = admin_area { link_to t(:remove), remove_keyword_path(keyword) }
+= admin_area { link_to t(:new), new_keyword_path }
