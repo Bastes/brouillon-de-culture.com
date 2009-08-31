@@ -4,6 +4,9 @@
     = f.label :title
     = f.text_field :title
   %p
+    = f.label :keywords_by_word, t('activerecord.models.keywords')
+    = f.text_field :keywords_by_word
+  %p
     = f.label :text
     = f.text_area :text
   %p= f.submit t(post.new_record? ? :create : :update)

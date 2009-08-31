@@ -1,4 +1,11 @@
 - title { @post.title }
+%div= @post.keywords_by_word
+%div
+  - created_at = @post.created_at.to_date
+  - updated_at = @post.updated_at.to_date
+  %i
+    #{l created_at}
+    = "- #{l updated_at}" if created_at != updated_at
 %div
   = @post.text
 %div
