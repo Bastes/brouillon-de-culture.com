@@ -7,6 +7,11 @@ class PostsController < ApplicationController
     @posts = Post.by_creation_date.with_keywords.all
   end
 
+  def hot
+    @posts = Post.by_creation_date.with_keywords.top.all
+    render :action => :index
+  end
+
   def show
     @post = Post.with_keywords.find params[:id]
   end
