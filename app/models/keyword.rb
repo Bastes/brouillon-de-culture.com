@@ -5,7 +5,7 @@ class Keyword < ActiveRecord::Base
   has_and_belongs_to_many :posts
 
   named_scope :with_posts, :include => :posts
-  named_scope :by_importance, :joins => :posts, :group => 'keywords.id',
+  named_scope :by_importance, :include => :posts, :group => 'keywords.id',
                               :order => 'count(posts.id) DESC'
   named_scope :top, :offset => 0, :limit => 5
 end
