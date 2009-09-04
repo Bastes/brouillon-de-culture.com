@@ -1,6 +1,7 @@
-- title { @keyword.word }
+- title { t('activerecord.models.keyword').capitalize }
 %div
+  %h2= @keyword.word
   = admin_area { link_to t(:edit), edit_keyword_path(@keyword) }
   = admin_area { link_to t(:remove), remove_keyword_path(@keyword) }
 = render :partial => 'posts/posts', :locals => { :posts => @keyword.posts }
-%div= link_to t(:back), keywords_path
+%div.nav= link_to t(:back), keywords_path

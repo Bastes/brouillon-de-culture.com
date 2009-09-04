@@ -1,4 +1,5 @@
-- title { @post.title }
+- title { t('activerecord.models.post').capitalize }
+%h2= @post.title
 %i
   %b= short_keyword_list @post.keywords
 %div
@@ -12,4 +13,4 @@
 %div
   = admin_area { link_to t(:edit), edit_post_path(@post) }
   = admin_area { link_to t(:remove), remove_post_path(@post) }
-%div= link_to t(:back), posts_path
+%div.nav= link_to t(:back), posts_path
