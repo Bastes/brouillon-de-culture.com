@@ -6,12 +6,23 @@ $(function() {
     catch(expt) {}
     if (action) {
       if (action == 'new') {
-        $('<li/>').load(myself.attr('href') + ' #view', function() {
-          $(this).appendTo(myself.prev('ul'));
+        $('<li/>').load(myself.attr('href') + ' #view > *', function() {
+          $(this)
+            .find('input[type=submit]').prev('a').click(function(event) {
+              event.preventDefault();
+              $(this).closest('li').remove();
+            })
+            .end().end()
+            .appendTo(myself.prev('ul'));
         });
       }
       else if (action == 'edit') {
-        myself.closest('li').load(myself.attr('href') + ' #view');
+        myself.closest('li').load(myself.attr('href') + ' #view > *', function() {
+          $(this).find('input[type=submit]').prev('a').click(function(event) {
+            event.preventDefault();
+            $(this).closest('li').load($(this).attr('href') + ' #view > *');
+          });
+        });
       }
       else if (action == 'remove');
       return false;

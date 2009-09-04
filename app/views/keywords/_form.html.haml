@@ -3,4 +3,7 @@
   %p
     = f.label :word
     = f.text_field :word
-  %p= f.submit t(keyword.new_record? ? :create : :update)
+  %p
+    - new = keyword.new_record?
+    = link_to t(:cancel), new ? keywords_path : @keyword
+    = f.submit t(new ? :create : :update)
