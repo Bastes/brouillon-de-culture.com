@@ -13,14 +13,14 @@ $(function() {
               $(this).closest('li').remove();
             })
             .end().end()
-            .appendTo(myself.prev('ul'));
+            .prependTo(myself.parent().children('ul:first'));
         });
       }
       else if (action == 'edit') {
         myself.closest('li').load(myself.attr('href') + ' #view > *', function() {
           $(this).find('input[type=submit]').prev('a').click(function(event) {
             event.preventDefault();
-            $(this).closest('li').load($(this).attr('href') + ' #view > *');
+            $(this).closest('li').load($(this).attr('href') + ' #view .item:first');
           });
         });
       }
@@ -39,7 +39,7 @@ $(function() {
       if (action.match(/delete/));
       else {
         $.post(myself.attr('action'), myself.serialize(), function(data) {
-          $('#view', data)
+          $('#view .item:first', data)
             .find('.nav').remove().end()
             .appendTo(myself.closest('li').empty());
         }, 'html');

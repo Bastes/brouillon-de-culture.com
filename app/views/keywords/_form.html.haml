@@ -5,5 +5,5 @@
     = f.text_field :word
   %p
     - new = keyword.new_record?
-    = link_to t(:cancel), new ? keywords_path : @keyword
+    = link_to t(:cancel), new ? keywords_path : keyword
     = f.submit t(new ? :create : :update)

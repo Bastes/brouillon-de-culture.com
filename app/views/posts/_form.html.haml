@@ -9,4 +9,7 @@
   %p
     = f.label :text
     = f.text_area :text
-  %p= f.submit t(post.new_record? ? :create : :update)
+  %p
+    - new = post.new_record?
+    = link_to t(:cancel), new ? posts_path : post
+    = f.submit t(new ? :create : :update)

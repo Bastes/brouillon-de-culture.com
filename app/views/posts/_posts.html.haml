@@ -1,12 +1,4 @@
 %ul
   - for post in posts
     %li
-      %h2= link_to "#{post.title}", post
-      - created_at = post.created_at.to_date
-      - updated_at = post.updated_at.to_date
-      %i
-        #{l created_at}
-        = "- #{l updated_at}" if created_at != updated_at
-        %b= short_keyword_list post.keywords
-      = admin_area { link_to t(:edit), edit_post_path(post) }
-      = admin_area { link_to t(:remove), remove_post_path(post) }
+      = render :partial => 'posts/post', :locals => { :post => post }

@@ -1,16 +1,5 @@
 - title { t('activerecord.models.post').capitalize }
-%h2= @post.title
-%i
-  %b= short_keyword_list @post.keywords
-%div
-  %i
-    - created_at = @post.created_at.to_date
-    - updated_at = @post.updated_at.to_date
-    #{l created_at}
-    = "- #{l updated_at}" if created_at != updated_at
-%div
-  = @post.text
-%div
-  = admin_area { link_to t(:edit), edit_post_path(@post) }
-  = admin_area { link_to t(:remove), remove_post_path(@post) }
-%div.nav= link_to t(:back), posts_path
+= render :partial => 'posts/post'
+%div.item
+%div= @post.text
+- navigation { link_to t(:back), posts_path }
