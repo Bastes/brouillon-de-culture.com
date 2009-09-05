@@ -19,3 +19,7 @@ a:active {
 #menu li {
   display: inline;
 }
+
+form label {
+  display: block;
+}
