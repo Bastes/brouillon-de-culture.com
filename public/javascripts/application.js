@@ -6,42 +6,58 @@ $(function() {
     catch(expt) {}
     if (action) {
       if (action == 'new') {
-        $('<li/>').load(myself.attr('href') + ' #view > *', function() {
+        $('<div/>').addClass('item').appendTo($('<li/>')).load(myself.attr('href') + ' #view > *', function() {
           $(this)
             .find('input[type=submit]').prev('a').click(function(event) {
               event.preventDefault();
               $(this).closest('li').remove();
             })
             .end().end()
+            .closest('li')
             .prependTo(myself.parent().children('ul:first'));
         });
       }
       else if (action == 'edit') {
-        myself.closest('li').load(myself.attr('href') + ' #view > *', function() {
+        myself.closest('.item').load(myself.attr('href') + ' #view > *', function() {
           $(this).find('input[type=submit]').prev('a').click(function(event) {
             event.preventDefault();
-            $(this).closest('li').load($(this).attr('href') + ' #view .item:first');
+            $(this).closest('.item').load($(this).attr('href') + ' #view .item:first');
           });
         });
       }
-      else if (action == 'remove');
+      else if (action == 'remove') {
+        $('<div/>').load(myself.attr('href') + ' #view > *', function() {
+          $(this).find('a').click(function(event) {
+            event.preventDefault();
+            $.modal.close();
+          })
+          .end()
+          .find('form').submit(function(event) {
+            event.preventDefault();
+            $.post($(this).attr('action'), $(this).serialize(), function(data) {
+              console.log(myself);
+              myself.closest('li').remove();
+              $.modal.close();
+            }, 'html');
+          })
+          .end().modal();
+        });
+      }
       return false;
     }
     return true;
   });
 
-  $('form').live('submit', function() {
+  $('ul form').live('submit', function() {
     myself = $(this);
-    console.log($(this));
     var action = myself.find('input[name=_method]').val();
     if (! action) action = myself.attr('method');
     if (action.match(/put|post|delete/)) {
-      if (action.match(/delete/));
-      else {
+      if (! action.match(/delete/)) {
         $.post(myself.attr('action'), myself.serialize(), function(data) {
           $('#view .item:first', data)
             .find('.nav').remove().end()
-            .appendTo(myself.closest('li').empty());
+            .appendTo(myself.closest('.item').empty());
         }, 'html');
       }
       return false;
