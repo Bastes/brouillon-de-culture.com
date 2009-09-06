@@ -35,7 +35,6 @@ $(function() {
           .find('form').submit(function(event) {
             event.preventDefault();
             $.post($(this).attr('action'), $(this).serialize(), function(data) {
-              console.log(myself);
               myself.closest('li').remove();
               $.modal.close();
             }, 'html');
@@ -63,5 +62,10 @@ $(function() {
       return false;
     }
     return true;
+  });
+
+  $.beautyOfCode.init({  
+    brushes: ['Xml', 'JScript', 'Css', 'Ruby'],
+    theme: 'Default'
   });
 });
