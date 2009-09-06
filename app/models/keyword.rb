@@ -8,4 +8,6 @@ class Keyword < ActiveRecord::Base
   named_scope :by_importance, :include => :posts, :group => 'keywords.id',
                               :order => 'count(posts.id) DESC'
   named_scope :top, :offset => 0, :limit => 5
+  named_scope :only_used, :joins => :posts, :group => 'keywords.id',
+                          :having => 'count(posts.id) > 0'
 end
