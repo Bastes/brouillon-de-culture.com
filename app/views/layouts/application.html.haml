@@ -10,16 +10,33 @@
     <![endif]-->
     = stylesheet_link_tag 'application', :media => 'screen'
   %body
-    %div
-      %ul#menu
-        %li= link_to t('activerecord.models.posts').capitalize, posts_path
-        %li= link_to t('activerecord.models.keywords').capitalize, keywords_path
-        %li
-          - if is_admin?
-            = link_to t('views.sessions.log_out').capitalize, logout_path
-          - else
-            = link_to t('views.sessions.log_in').capitalize, login_path
-      %h1= title
-      #notices= flash[:notice] if flash[:notice]
-      #view= yield
-      #navigation= navigation
+    #whole
+      #paper
+        %a#site_title
+          %span brouillon-de-culture.com
+
+        %ul#menu
+          %li= link_to t('activerecord.models.posts').capitalize, posts_path
+          %li= link_to t('activerecord.models.keywords').capitalize, keywords_path
+          %li
+            - if is_admin?
+              = link_to t('views.sessions.log_out').capitalize, logout_path
+            - else
+              = link_to t('views.sessions.log_in').capitalize, login_path
+
+        %ul#highlights
+          %li.cover
+            %a
+              %span= t(:cover)
+          %li.who
+            %a
+              %span= t(:who)
+          %li.other_things
+            %a
+              %span= t(:other_things)
+
+        %h1= title
+        #notices= flash[:notice] if flash[:notice]
+        #view= yield
+        #navigation= navigation
+        #footer
