@@ -1,3 +1,4 @@
 - title { t('activerecord.models.posts').capitalize }
-= render :partial => 'posts', :locals => { :posts => @posts }
-= admin_area { link_to t(:new), new_post_path }
+%div.index
+  = render :partial => 'posts', :locals => { :posts => @posts }
+  = admin_area { link_to t(:new), new_post_path }

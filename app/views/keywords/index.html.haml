@@ -1,5 +1,6 @@
 - title { t('activerecord.models.keywords').capitalize }
-%ul
-  - for keyword in @keywords
-    %li= render :partial => 'keywords/keyword', :locals => { :keyword => keyword }
-= admin_area { link_to t(:new), new_keyword_path }
+%div.index
+  %ul
+    - for keyword in @keywords
+      %li= render :partial => 'keywords/keyword', :locals => { :keyword => keyword }
+  = admin_area { link_to t(:new), new_keyword_path }

@@ -1,5 +1,5 @@
 $(function() {
-  $('a').live('click', function() {
+  $('.index a').live('click', function() {
     myself = $(this);
     var action = false;
     try { action = myself.attr('href').match(/\/(new|edit|remove)\b/)[1]; }
@@ -11,10 +11,8 @@ $(function() {
             .find('input[type=submit]').prev('a').click(function(event) {
               event.preventDefault();
               $(this).closest('li').remove();
-            })
-            .end().end()
-            .closest('li')
-            .prependTo(myself.parent().children('ul:first'));
+            }).end().end()
+            .closest('li').prependTo(myself.parent().children('ul:first'));
         });
       }
       else if (action == 'edit') {
@@ -64,7 +62,7 @@ $(function() {
     return true;
   });
 
-  $.beautyOfCode.init({  
+  $.beautyOfCode.init({
     brushes: ['Xml', 'JScript', 'Css', 'Ruby'],
     theme: 'Default'
   });
