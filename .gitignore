@@ -7,3 +7,4 @@ db/*.sqlite*
 db/schema.rb
 *.swp
 .DS_Store
+.vimproject
