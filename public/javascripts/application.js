@@ -10,16 +10,25 @@ $(function() {
           $(this)
             .find('input[type=submit]').prev('a').click(function(event) {
               event.preventDefault();
-              $(this).closest('li').remove();
+              $(this).closest('.item').slideUp('slow', function() { $(this).closest('li').remove()});
             }).end().end()
-            .closest('li').prependTo(myself.parent().children('ul:first'));
+            .hide()
+            .closest('li').prependTo(myself.parent().children('ul:first'))
+            .find('.item:first').slideDown('slow');
         });
       }
       else if (action == 'edit') {
-        myself.closest('.item').load(myself.attr('href') + ' #view > *', function() {
-          $(this).find('input[type=submit]').prev('a').click(function(event) {
-            event.preventDefault();
-            $(this).closest('.item').load($(this).attr('href') + ' #view .item:first');
+        myself.closest('.item').fadeOut('slow', function() {
+          $(this).load(myself.attr('href') + ' #view > *', function() {
+            $(this).fadeIn('slow').find('input[type=submit]').prev('a').click(function(event) {
+              event.preventDefault();
+              var myself = $(this);
+              myself.closest('.item').fadeOut('slow', function() {
+                $(this).load(myself.attr('href') + ' #view .item:first', function() {
+                  $(this).fadeIn('slow');
+                });
+              });
+            });
           });
         });
       }
@@ -33,7 +42,7 @@ $(function() {
           .find('form').submit(function(event) {
             event.preventDefault();
             $.post($(this).attr('action'), $(this).serialize(), function(data) {
-              myself.closest('li').remove();
+              myself.closest('li').fadeOut('slow', function() { $(this).remove(); });
               $.modal.close();
             }, 'html');
           })
@@ -52,9 +61,11 @@ $(function() {
     if (action.match(/put|post|delete/)) {
       if (! action.match(/delete/)) {
         $.post(myself.attr('action'), myself.serialize(), function(data) {
-          $('#view .item:first', data)
-            .find('.nav').remove().end()
-            .appendTo(myself.closest('.item').empty());
+          myself.closest('.item').fadeOut('slow', function() {
+            myself.closest('.item').empty()
+              .append($('#view .item:first', data).find('.nav').remove().end()) // FIXME : inadequate selector when an error occured
+              .fadeIn('slow');
+          });
         }, 'html');
       }
       return false;
