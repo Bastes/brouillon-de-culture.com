@@ -111,14 +111,6 @@ body {
   background-image: url(/images/languette_autre_chose.png);
 }
 
-form label {
-  display: block;
-}
-
-#view {
-
-}
-
 #notices {
   height: 38px;
   color: #005544;
@@ -136,6 +128,10 @@ form label {
 
 form .group {
   position: relative;
+}
+
+form label {
+  display: block;
 }
 
 .formError {
@@ -157,4 +153,44 @@ form .group {
   border: solid 2px darkred;
   background: white;
   text-align: center;
+}
+
+#view {
+
+}
+
+#view .post {
+  margin-bottom: 30px;
+}
+
+#view .post .title {
+  font-size: 150%;
+  font-weight: bold;
+}
+
+#view .post .keyword {
+  margin-bottom: 0px;
+}
+
+#view .post .keyword .word {
+  display: inline;
+  font-size: 100%;
+}
+
+#view .keyword {
+  margin-bottom: 30px;
+}
+
+#view .keyword .word {
+  font-size: 150%;
+  font-weight: bold;
+}
+
+#view .keyword .post {
+  margin-bottom: 30px;
+}
+
+#view .keyword .post .title {
+  font-size: 130%;
+  font-weight: bold;
 }

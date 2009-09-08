@@ -1,4 +1,4 @@
-%div.item
-  %h2= link_to "#{keyword.word} (#{keyword.posts.count})", keyword
+.item
+  .word= link_to "#{keyword.word} (#{keyword.posts.count})", keyword
   = admin_area { link_to t(:edit), edit_keyword_path(keyword) }
   = admin_area { link_to t(:remove), remove_keyword_path(keyword) }

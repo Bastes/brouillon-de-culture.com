@@ -1,4 +1,3 @@
 %ul
   - for post in posts
-    %li
-      = render :partial => 'posts/post', :locals => { :post => post }
+    %li.post= render :partial => post

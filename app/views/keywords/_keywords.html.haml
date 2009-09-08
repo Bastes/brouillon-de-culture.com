@@ -1,0 +1,3 @@
+%ul
+  - for keyword in keywords
+    %li.keyword= render :partial => 'keywords/keyword', :locals => { :keyword => keyword }
