@@ -1,9 +1,9 @@
 - form_for keyword do |f|
-  = f.error_messages
-  %p
+  .group
     = f.label :word
+    = f.error_message_on :word
     = f.text_field :word
-  %p
+  .group
     - new = keyword.new_record?
     = link_to t(:cancel), new ? keywords_path : keyword
     = f.submit t(new ? :create : :update)

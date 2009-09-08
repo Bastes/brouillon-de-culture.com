@@ -1,15 +1,16 @@
 - form_for post do |f|
-  = f.error_messages
-  %p
+  .group
     = f.label :title
+    = f.error_message_on :title
     = f.text_field :title
-  %p
+  .group
     = f.label :keywords_by_word, t('activerecord.models.keywords')
     = f.text_field :keywords_by_word
-  %p
+  .group
     = f.label :text
+    = f.error_message_on :text
     = f.text_area :text
-  %p
+  .group
     - new = post.new_record?
     = link_to t(:cancel), new ? posts_path : post
     = f.submit t(new ? :create : :update)

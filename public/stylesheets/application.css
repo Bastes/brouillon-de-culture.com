@@ -133,3 +133,22 @@ form label {
   right: 0px;
   background: url(/images/postit_pied.png) no-repeat 0px 0px transparent;
 }
+
+form .group {
+  position: relative;
+}
+
+.formError {
+  position: absolute;
+  top: 0px; right: 0px;
+  color: red;
+}
+
+.fieldWithErrors {
+  color: red;
+}
+
+.fieldWithErrors input,
+.fieldWithErrors textarea {
+  border-color: red;
+}
