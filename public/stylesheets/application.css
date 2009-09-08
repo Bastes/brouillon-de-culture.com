@@ -119,6 +119,12 @@ form label {
 
 }
 
+#notices {
+  height: 38px;
+  color: #005544;
+  overflow: hidden;
+}
+
 #footer {
   width: 237px;
   height: 90px;

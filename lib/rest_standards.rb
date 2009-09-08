@@ -18,7 +18,7 @@ module RestStandards
       done 'create'
       redirect_to item
     else
-      render :action => :new
+      render :action => :new, :status => 422
     end
   end
 
@@ -31,7 +31,7 @@ module RestStandards
       done 'update'
       redirect_to item
     else
-      render :action => :edit
+      render :action => :edit, :status => 422
     end
   end
 

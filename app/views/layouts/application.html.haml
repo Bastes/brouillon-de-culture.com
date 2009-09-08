@@ -36,7 +36,8 @@
               %span= t(:other_things)
 
         %h1= title
-        #notices= flash[:notice] if flash[:notice]
+        #notices
+          %div= flash[:notice] if flash[:notice]
         #view= yield
         #navigation= navigation
         #footer

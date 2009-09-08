@@ -1,4 +1,10 @@
 $(function() {
+  var fadeNotices = function() {
+    $('#notices div').animate({ opacity: 1 }, { duration: 3000, complete: function() {
+      $(this).fadeOut('slow');
+    } });
+  };
+
   $('.index a').live('click', function() {
     myself = $(this);
     var action = false;
@@ -60,18 +66,31 @@ $(function() {
     if (! action) action = myself.attr('method');
     if (action.match(/put|post|delete/)) {
       if (! action.match(/delete/)) {
-        $.post(myself.attr('action'), myself.serialize(), function(data) {
-          myself.closest('.item').fadeOut('slow', function() {
-            myself.closest('.item').empty()
-              .append($('#view .item:first', data).find('.nav').remove().end()) // FIXME : inadequate selector when an error occured
-              .fadeIn('slow');
-          });
-        }, 'html');
+        $.ajax({
+          type: "POST",
+          url: myself.attr('action'),
+          data: myself.serialize(),
+          dataType: 'html',
+          success: function(data) {
+            $('#notices').append($('#notices > *', data));
+            fadeNotices();
+            myself.closest('.item').fadeOut('slow', function() {
+              myself.closest('.item').empty()
+                .append($('#view .item:first', data).find('.nav').remove().end()) // FIXME : inadequate selector when an error occured
+                .fadeIn('slow');
+            });
+          },
+          error: function(XMLHttpRequest, textStatus, errorThrown) {
+            myself.closest('.item').html($('#view > *', XMLHttpRequest.responseText));
+          }
+        });
       }
       return false;
     }
     return true;
   });
+ 
+  fadeNotices();
 
   $.beautyOfCode.init({
     brushes: ['Xml', 'JScript', 'Css', 'Ruby'],
