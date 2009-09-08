@@ -5,37 +5,28 @@ $(function() {
     } });
   };
 
+  var formAction = function(form) {
+    var action = form.find('input[name=_method]').val();
+    if (! action) action = form.attr('method');
+    return action;
+  };
+
   $('.index a').live('click', function() {
     myself = $(this);
     var action = false;
-    try { action = myself.attr('href').match(/\/(new|edit|remove)\b/)[1]; }
+    try { action = myself.attr('href').match(/\/(new|edit|remove)\b/i)[1]; }
     catch(expt) {}
     if (action) {
       if (action == 'new') {
         $('<div/>').addClass('item').appendTo($('<li/>')).load(myself.attr('href') + ' #view > *', function() {
-          $(this)
-            .find('input[type=submit]').prev('a').click(function(event) {
-              event.preventDefault();
-              $(this).closest('.item').slideUp('slow', function() { $(this).closest('li').remove()});
-            }).end().end()
-            .hide()
+          $(this).hide()
             .closest('li').prependTo(myself.parent().children('ul:first'))
             .find('.item:first').slideDown('slow');
         });
       }
       else if (action == 'edit') {
         myself.closest('.item').fadeOut('slow', function() {
-          $(this).load(myself.attr('href') + ' #view > *', function() {
-            $(this).fadeIn('slow').find('input[type=submit]').prev('a').click(function(event) {
-              event.preventDefault();
-              var myself = $(this);
-              myself.closest('.item').fadeOut('slow', function() {
-                $(this).load(myself.attr('href') + ' #view .item:first', function() {
-                  $(this).fadeIn('slow');
-                });
-              });
-            });
-          });
+          $(this).load(myself.attr('href') + ' #view > *', function() { $(this).fadeIn('slow'); });
         });
       }
       else if (action == 'remove') {
@@ -57,15 +48,28 @@ $(function() {
       }
       return false;
     }
+    var myform = myself.closest('form');
+    if (myform.length > 0) {
+      var action = formAction(myform);
+      if (action.match(/post|put/i)) {
+        if (action.match(/post/i))
+          myself.closest('.item').slideUp('slow', function() { $(this).closest('li').remove()});
+        else {
+          myself.closest('.item').fadeOut('slow', function() {
+            $(this).load(myself.attr('href') + ' #view .item:first', function() { $(this).fadeIn('slow'); });
+          });
+        }
+        return false;
+      }
+    }
     return true;
   });
 
   $('ul form').live('submit', function() {
     myself = $(this);
-    var action = myself.find('input[name=_method]').val();
-    if (! action) action = myself.attr('method');
-    if (action.match(/put|post|delete/)) {
-      if (! action.match(/delete/)) {
+    var action = formAction(myself);
+    if (action.match(/put|post|delete/i)) {
+      if (! action.match(/delete/i)) {
         $.ajax({
           type: "POST",
           url: myself.attr('action'),
