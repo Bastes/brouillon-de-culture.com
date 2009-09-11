@@ -1,5 +1,4 @@
 - title { t('activerecord.models.post').capitalize }
-.post
-  = render :partial => @post
-  %div= textilize @post.text
-  - navigation { link_to t(:back), posts_path }
+= render :partial => @post
+%div= textilize @post.text
+- navigation { link_to t(:back), posts_path }

@@ -1,5 +1,4 @@
 - title { t('activerecord.models.keyword').capitalize }
-.keyword
-  = render :partial => @keyword
-  = render :partial => 'posts/posts', :locals => { :posts => @keyword.posts }
+= render :partial => @keyword
+= render :partial => 'posts/posts', :locals => { :posts => @keyword.posts }
 - navigation { link_to t(:back), keywords_path }
