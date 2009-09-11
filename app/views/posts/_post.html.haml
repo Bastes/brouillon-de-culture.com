@@ -1,4 +1,4 @@
-.item
+- content_tag 'div', { :class => "item post_#{post.id}" } do
   .title= link_to "#{post.title}", post
   - created_at = post.created_at.to_date
   - updated_at = post.updated_at.to_date

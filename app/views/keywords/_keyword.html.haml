@@ -1,4 +1,4 @@
-.item
+- content_tag 'div', { :class => "item keyword_#{keyword.id}" } do
   .word= link_to "#{keyword.word} (#{keyword.posts.count})", keyword
   = admin_area { link_to t(:edit), edit_keyword_path(keyword) }
   = admin_area { link_to t(:remove), remove_keyword_path(keyword) }

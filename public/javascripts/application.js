@@ -26,7 +26,9 @@ $(function() {
       }
       else if (action == 'edit') {
         myself.closest('.item').fadeOut('slow', function() {
-          $(this).load(myself.attr('href') + ' #view > *', function() { $(this).fadeIn('slow'); });
+          $(this).load(myself.attr('href') + ' #view > *', function() {
+            $(this).fadeIn('slow');
+          });
         });
       }
       else if (action == 'remove') {
@@ -56,7 +58,9 @@ $(function() {
           myself.closest('.item').slideUp('slow', function() { $(this).closest('li').remove()});
         else {
           myself.closest('.item').fadeOut('slow', function() {
-            $(this).load(myself.attr('href') + ' #view .item:first', function() { $(this).fadeIn('slow'); });
+            $(this).load(myself.attr('href') + ' #view .item:first', function() {
+              $(this).fadeIn('slow');
+            });
           });
         }
         return false;
@@ -79,9 +83,10 @@ $(function() {
             $('#notices').append($('#notices > *', data));
             fadeNotices();
             myself.closest('.item').fadeOut('slow', function() {
-              myself.closest('.item').empty()
-                .append($('#view .item:first', data).find('.nav').remove().end()) // FIXME : inadequate selector when an error occured
-                .fadeIn('slow');
+              var new_content = $('#view .item:first', data).find('.nav').remove().end();
+              if (action.match(/put/)) $('.' + $(this).attr('class').match(/\b\w+_\d+\b/)[0]).html(new_content);
+              else $(this).html(new_content);
+              $(this).fadeIn('slow');
             });
           },
           error: function(XMLHttpRequest, textStatus, errorThrown) {
