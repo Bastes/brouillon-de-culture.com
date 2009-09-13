@@ -1,0 +1,5 @@
+- title { t('activerecord.models.directions').capitalize }
+.index
+  = admin_area { link_to t(:new), new_direction_path }
+  = render :partial => 'directions', :locals => { :directions => @directions }
+  = admin_area { link_to t(:new), new_direction_path }

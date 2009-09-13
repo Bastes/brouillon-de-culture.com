@@ -1,0 +1,3 @@
+%ul.directions
+  - for direction in directions
+    %li= render :partial => 'directions/direction', :locals => { :direction => direction }

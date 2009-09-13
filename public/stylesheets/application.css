@@ -172,6 +172,22 @@ form label {
   margin-bottom: 0px;
 }
 
+#view .post .keyword {
+  display: inline;
+  position: relative;
+  margin-bottom: 0px;
+}
+
+#view .post .keyword * {
+  display: inline;
+}
+
+#view .posts .keywords .actions {
+  position: absolute;
+  top: 100%;
+  left: 0px;
+}
+
 #view .posts .keywords .word {
   display: inline;
   font-size: 100%;

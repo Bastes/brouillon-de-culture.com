@@ -1,0 +1,10 @@
+fr:
+  activerecord:
+    models:
+      direction: "direction"
+      directions: "directions"
+    attributes:
+      direction:
+        name: "nom"
+        url: "url"
+        description: "description"

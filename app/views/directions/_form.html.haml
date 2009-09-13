@@ -1,0 +1,16 @@
+- form_for direction do |f|
+  .group
+    = f.label :url
+    = f.error_message_on :url
+    = f.text_field :url
+  .group
+    = f.label :name
+    = f.error_message_on :name
+    = f.text_field :name
+  .group
+    = f.label :description
+    = f.text_area :description
+  .group
+    - new = direction.new_record?
+    = link_to t(:cancel), new ? directions_path : direction
+    = f.submit t(new ? :create : :update)
