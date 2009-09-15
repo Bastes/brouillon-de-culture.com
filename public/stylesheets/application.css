@@ -11,7 +11,7 @@ a:active {
 }
 
 body {
-  background: #c5c5c5;
+  background: url(/images/fond_pavage.png) repeat 0px 0px;
 }
 
 #whole {
@@ -23,7 +23,7 @@ body {
 }
 
 #whole #paper {
-  position: relative;
+  position: absolute;
   background: url(/images/fond.png) no-repeat 0px 0px;
   width: 570px;
   padding-left: 260px;
