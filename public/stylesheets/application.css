@@ -210,3 +210,12 @@ form label {
   font-size: 130%;
   font-weight: bold;
 }
+
+#view .directions .name {
+  font-size: 150%;
+  font-weight: bold;
+}
+
+#view .directions form textarea {
+  height: 80px;
+}
