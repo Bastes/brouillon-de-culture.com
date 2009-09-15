@@ -36,9 +36,8 @@
             %a
               %span= t(:who)
           %li.other_things
-            %a
+            - link_to directions_path do
               %span= t(:other_things)
-
         %h1= title
         #notices
           %div= flash[:notice] if flash[:notice]
