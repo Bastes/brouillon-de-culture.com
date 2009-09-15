@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   include RestStandards
 
-  before_filter :as_admin, :except => [:index, :show]
+  before_filter :as_admin, :except => [:hot, :index, :show]
 
   def index
     @posts = Post.by_creation_date.with_keywords.all

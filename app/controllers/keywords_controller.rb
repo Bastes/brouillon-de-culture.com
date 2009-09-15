@@ -1,7 +1,7 @@
 class KeywordsController < ApplicationController
   include RestStandards
 
-  before_filter :as_admin, :except => [:index, :show]
+  before_filter :as_admin, :except => [:hot, :index, :show]
 
   def index
     @keywords = Keyword.by_importance.with_posts.all

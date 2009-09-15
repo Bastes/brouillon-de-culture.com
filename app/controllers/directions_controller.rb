@@ -1,7 +1,7 @@
 class DirectionsController < ApplicationController
   include RestStandards
 
-  before_filter :as_admin, :except => [:index, :show]
+  before_filter :as_admin, :except => [:hot, :index, :show]
 
   def index
     @directions = Direction.by_creation_date.all
