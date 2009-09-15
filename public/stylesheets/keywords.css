@@ -1,0 +1,17 @@
+#view .keywords li {
+  margin-bottom: 30px;
+}
+
+#view .keywords .word {
+  font-size: 150%;
+  font-weight: bold;
+}
+
+#view .keywords .posts li {
+  margin-bottom: 30px;
+}
+
+#view .keywords .posts .title {
+  font-size: 130%;
+  font-weight: bold;
+}
