@@ -2,6 +2,8 @@
 # Likewise, all the methods added will be available for all controllers.
 
 class ApplicationController < ActionController::Base
+  layout proc { |controller| controller.request.xhr? ? 'ajax' : 'application' } 
+
   helper :all
 
   helper_method :is_admin?
