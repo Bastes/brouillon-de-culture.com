@@ -1,5 +1,5 @@
-- title { "#{t('activerecord.models.direction').capitalize} : #{t(:remove)}" }
+- title { "#{t('activerecord.models.keyword').capitalize} : #{t(:remove)}" }
 %h2= tws :remove_confirmation
-- form_for @direction, :html => { :method => 'delete' } do |f|
-  = link_to t(:cancel), @direction
+- form_for @keyword, :html => { :method => 'delete' } do |f|
+  = link_to t(:cancel), @keyword
   = submit_tag t(:yes)
