@@ -4,11 +4,11 @@ class PostsController < ApplicationController
   before_filter :as_admin, :except => [:hot, :index, :show]
 
   def index
-    @posts = Post.by_creation_date.with_keywords.all
+    @posts = Post.by_creation_date.with_keywords.paginate :page => params[:page]
   end
 
   def hot
-    @posts = Post.by_creation_date.with_keywords.top.all
+    @posts = Post.by_creation_date.with_keywords.paginate :page => 1
     render :action => :index
   end
 

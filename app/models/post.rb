@@ -7,7 +7,11 @@ class Post < ActiveRecord::Base
 
   named_scope :with_keywords, :include => :keywords
   named_scope :by_creation_date, :order => "created_at DESC"
-  named_scope :top, :offset => 0, :limit => 5
+  named_scope :top, :offset => 0
+
+  def self.per_page
+    5
+  end
 
   def keywords_by_word= words
     words = words.split(/\s*,\s*/) if words.respond_to? :split

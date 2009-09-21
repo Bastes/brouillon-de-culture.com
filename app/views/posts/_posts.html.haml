@@ -1,3 +1,4 @@
 %ul.posts
   - for post in posts
     %li= render :partial => post
+= will_paginate posts
