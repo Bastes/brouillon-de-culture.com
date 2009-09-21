@@ -51,7 +51,11 @@ $(function() {
       return false;
     }
     if (myself.is('a') && myself.closest('.pagination').length > 0) {
-      myself.closest('#view').load(myself.attr('href') + ' #view');
+      myself.closest('#view').fadeOut('slow', function() {
+        $(this).load(myself.attr('href') + ' #view', function() {
+          $(this).fadeIn('slow');
+        });
+      });
       return false;
     }
     var myform = myself.closest('form');
