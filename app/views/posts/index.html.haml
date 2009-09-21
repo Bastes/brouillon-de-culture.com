@@ -1,5 +1,7 @@
 - title { t('activerecord.models.posts').capitalize }
 .index
+  = will_paginate @posts
   = admin_area { link_to t(:new), new_post_path }
   = render :partial => 'posts/posts', :locals => { :posts => @posts }
   = admin_area { link_to t(:new), new_post_path }
+  = will_paginate @posts
