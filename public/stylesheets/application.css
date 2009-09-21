@@ -129,6 +129,20 @@ body {
   background: url(/images/postit_pied.png) no-repeat 0px 0px transparent;
 
   text-align: center;
+  color: #555555;
+}
+
+#footer .follow_me {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  position: relative;
+  top: 3px;
+  background-image: url(/images/rss-feed.png);
+}
+
+#footer .follow_me span {
+  display: none;
 }
 
 form .group {

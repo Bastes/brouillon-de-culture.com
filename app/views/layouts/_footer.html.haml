@@ -1,3 +1,6 @@
 = link_to 'brouillon-de-culture.com', 'http://brouillon-de-culture.com'
 %br
-2009 (c) #{link_to 'contact', 'michel.belleville@gmail.com'}
+2009 (c)
+= link_to 'contact', 'michel.belleville@gmail.com'
+- link_to formatted_posts_url(:rss), :class => 'follow_me', :title => t(:follow_me) do
+  %span= t(:follow_me)
