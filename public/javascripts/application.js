@@ -50,6 +50,10 @@ $(function() {
       }
       return false;
     }
+    if (myself.is('a') && myself.closest('.pagination').length > 0) {
+      myself.closest('#view').load(myself.attr('href') + ' #view');
+      return false;
+    }
     var myform = myself.closest('form');
     if (myform.length > 0) {
       var action = formAction(myform);
