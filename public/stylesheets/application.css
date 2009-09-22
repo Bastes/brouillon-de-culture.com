@@ -117,6 +117,23 @@ body {
   overflow: hidden;
 }
 
+#sideways {
+  position: absolute;
+  left: 60px;
+  top: 270px;
+  margin: 0px;
+  padding: 0px;
+  list-style-type: none;
+}
+
+#sideways > li {
+  font-weight: bold;
+}
+
+#sideways ul li {
+  font-size: 80%;
+}
+
 #footer {
   width: 237px;
   height: 65px;

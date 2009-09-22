@@ -40,6 +40,15 @@
           %li.other_things
             - link_to directions_path do
               %span= t(:other_things)
+
+        %ul#sideways
+          %li.keywords
+            - link_to keywords_path do
+              %span= t(:main_keywords)
+            %ul
+              - for keyword in hottest_keywords do
+                %li= link_to keyword.word, keyword
+
         %h1= title
         #notices
           %div= flash[:notice] if flash[:notice]

@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
 
   helper :all
 
-  helper_method :is_admin?
+  helper_method :is_admin?, :hottest_keywords
 
   protect_from_forgery
 
@@ -34,5 +34,9 @@ class ApplicationController < ActionController::Base
 
   def as_admin
     redirect_to login_path unless is_admin?
+  end
+
+  def hottest_keywords
+    @hottest_keywords ||= Keyword.by_importance.only_used.top
   end
 end
