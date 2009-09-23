@@ -12,6 +12,12 @@ a:active {
 
 body {
   background: url(/images/fond_pavage.png) repeat 0px 0px;
+  padding: 0px;
+}
+
+div {
+  margin: 0px;
+  padding: 0px;
 }
 
 #whole {
@@ -127,8 +133,13 @@ body {
   list-style-type: none;
 }
 
-#sideways > li {
+#sideways li {
   font-weight: bold;
+}
+
+#sideways ul {
+  list-style-type: none;
+  padding-left: 20px;
 }
 
 #sideways ul li {
