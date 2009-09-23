@@ -2,19 +2,23 @@
   margin-bottom: 30px;
 }
 
+#view .post .title,
 #view .posts .title {
   font-size: 150%;
   font-weight: bold;
 }
 
+#view .post .keywords li,
 #view .posts .keywords li {
   margin-bottom: 0px;
 }
 
+#view .post .keywords li *,
 #view .posts .keywords li * {
   display: inline;
 }
 
+#view .post .keywords .word,
 #view .posts .keywords .word {
   font-size: 100%;
 }
