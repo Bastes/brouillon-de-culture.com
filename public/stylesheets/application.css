@@ -23,9 +23,10 @@ body {
 }
 
 #whole #paper {
-  position: absolute;
+  position: relative;
   background: url(/images/fond.png) no-repeat 0px 0px;
   width: 570px;
+  min-height: 500px;
   padding-left: 260px;
   padding-right: 70px;
   padding-top: 200px;
