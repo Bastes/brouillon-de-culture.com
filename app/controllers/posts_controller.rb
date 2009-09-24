@@ -9,7 +9,6 @@ class PostsController < ApplicationController
 
   def hot
     @posts = Post.by_creation_date.with_keywords.paginate :page => 1
-    render :action => :index
   end
 
   def show

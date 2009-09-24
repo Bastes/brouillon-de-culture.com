@@ -1,0 +1,5 @@
+- title { t('views.posts.hot.title').capitalize }
+= link_to t('views.posts.hot.all_posts'), posts_path
+.index
+  = render :partial => 'posts/posts', :locals => { :posts => @posts }
+= link_to t('views.posts.hot.all_posts'), posts_path
