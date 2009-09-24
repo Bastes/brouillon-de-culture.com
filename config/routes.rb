@@ -6,5 +6,8 @@ ActionController::Routing::Routes.draw do |map|
 
   map.login   'login', :controller => 'sessions', :action => 'new'
   map.logout  'logout', :controller => 'sessions', :action => 'destroy'
+
+  map.bio 'bio.:format', :controller => 'statics', :action => 'bio'
+
   map.root :controller => 'posts', :action => 'hot'
 end

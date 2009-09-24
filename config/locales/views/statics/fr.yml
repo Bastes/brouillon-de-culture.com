@@ -1,0 +1,102 @@
+fr:
+  views:
+    statics:
+      bio:
+        title: "Qui suis-je ?"
+        presentations:
+          h3. C'est l'histoire d'un mec...
+
+
+          ... qui découvre l'internet en 1996, et qui trouve que c'est un truc
+          super génial, parce que le gars il est curieux d'informatique et un
+          outil qui permet de causer avec les ordinateurs du monde entier, il
+          aime bien.
+
+
+          Comme sur l'internet, il faut parler anglais, le gars il se met à
+          parler anglais. Et puis il découvre que le net, c'est composé de plein
+          de pages html, et il apprend l'html. Et puis il découvre que l'html
+          c'est facile, mais que c'est mieux quand on lui apprend à faire des
+          trucs et des machins tout seul comme un grand alors il apprend le PHP.
+          Et puis le mec, il entend parler d'un truc qui s'appelle css et qui
+          permet de faire que les pages c'est beau, alors il apprend le css. Et
+          quand on lui parle de JavaScript...
+
+
+          Aujourd'hui le mec il parle plein de langages qui parlent avec des
+          machines, et en quelque sorte il a fait son métier de traduire aux
+          machines ce que veulent les humains. Et d'apprendre aux machines à
+          parler un peu mieux aux humains aussi. Et il trouve que c'est pas
+          triste.
+
+
+          h3. Et maintenant ?
+
+
+          Je travaille à plein temps depuis 2002 dans le domaine du web. C'est
+          en faisant que j'ai appris, et comme tout autodidacte j'ai beaucoup
+          tâtonné et pris les routes difficiles. Internet à été tour à tour ma
+          bibliothèque, ma bouée de secours quand je me noyais dans les
+          difficultés. Aujourd'hui je commence à prendre le temps de redonner
+          un peu pour tout ce qu'on m'a apporté.
+
+
+          Mais apporter quoi et à qui ? Il y a déjà beaucoup de très bons sites
+          qui donnent de l'information sur les langagues de programmation, et
+          surtout ceux que "parlent" l'internet, mais une majeure partie en
+          anglais, et la grande majorité écrit par des programmeurs pour des
+          programmeurs. Techniquement je suis un programmeur, mais en tant
+          qu'autodidacte je suis fermement convaincu que n'importe qui peut, et
+          même que n'importe qui devrait être capable de prendre en main un ou
+          plusieurs langages de programmation.
+
+
+          Et puis j'ai découvert que quelqu'un avait osé faire un manuel pour
+          apprendre un langage comme on lirait un poème, et c'est grâce à ce
+          poème que j'ai appris aussi vite à lire et écrire le Ruby. Son nom est
+          Why the Lucky Stiff et c'est lui qui m'a donné l'idée de commencer à
+          rédiger mon propre site.
+
+
+          h3. Choix des lecteurs
+
+
+          Ceci est _mon_ site, et je pense qu'il est normal que je choisisse
+          _mes_ lecteurs. Vous, vous pouvez rester, de toute façon vous êtes
+          déjà là. Vous pouvez aussi partir, revenir, aller faire vos courses ou
+          peindre des giraffes mauves, à condition que vous m'envoyez une photo
+          (j'aime les giraffes mauves).
+
+
+          Donc ce site s'addresse aux giraffes mauves, et aux gens qui les
+          peignent, ou qui les imaginent. Il est là pour donner des outils et
+          l'envie de les utiliser, pour faire un web meilleur, plus riche, plus
+          beau, plus vivant. Ou simplement pour faire votre petite maison dans
+          cette vaste prairie.
+
+
+          Et je parle de vous, qui que vous soyez, quoi que vous sachiez sur le
+          web, ou sur l'informatique, quoi que vous croyez savoir ou surtout ne
+          pas savoir. Vous avez la possibilité d'apprendre des langues nouvelles
+          qui vont enrichir votre expérience et celles des autres, et la plupart
+          du temps ces langues sont faciles à apprendre. Et je ne dis pas ça
+          parce que j'ai des facilités, j'ai eu et j'ai encore des galères dans
+          le cadre de mon métier et de mon utilisation quotidienne des choses
+          dont je vais parler ici.
+
+
+          h3. De l'élitisme et de comment l'éviter
+
+
+          Donc qui que vous soyez, vous êtes ici chez vous. Et pour que vous
+          vous y sentiez vraiment à l'aise, n'hésitez pas à commenter mes petits
+          topos. Mon but ici est d'être lisible et compréhensible même par le
+          profane (surtout par le profane) quel que soit le sujet. Si jamais mes
+          billets n'étaient pas assez doux, si mes métaphores filent, ou si des
+          acronymes abscons venaient à vous agresser, n'hésitez pas à m'avertir,
+          et même à me tancer, les commentaires sont fait pour ça.
+
+
+          Ce site est là pour partager des idées et des techniques pour se
+          sentir bien dans sa vie de professionnel ou d'amateur d'Internet.
+--- # ==========================================================================
