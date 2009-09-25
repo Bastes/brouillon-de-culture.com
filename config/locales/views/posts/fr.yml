@@ -1,7 +1,7 @@
 fr:
   views:
     posts:
-      remove_confirmation: "Etes-vous sûr de vouloir retirer cette direction ?"
+      remove_confirmation: "Etes-vous sûr de vouloir retirer cet article ?"
       hot:
         title: "en couverture :"
         all_posts: "tous les articles"
