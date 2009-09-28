@@ -16,5 +16,65 @@ fr:
           que j'assimilais.
           
 
-          "
+          Et j'ai eu l'agréable surprise de constater que parmis les intéressés,
+          il n'y avait pas que des codeurs passionnés mais aussi des graphistes,
+          webdesigners, bloggers, etc. à qui pouvait manquer quelques outils
+          pour être à l'aise dans leur pratique de l'internet. Et en ayant à
+          revenir fréquemment au niveau 0 de matières que je maîtrisais (ou que
+          je croyais maîtriser), je commençais à moi-même mieux les comprendre
+          et les appréhender.
+
+
+          C'est en faisant ce genre de formation informelle en face à face que
+          les mêmes demandes commençaient à s'accumuler : des supports pour
+          conserver l'information, des exemples pour aller plus loin, et plus
+          de temps pour fixer les notions abordées. C'est pour répondre à ces
+          demandes et pour toucher un plus vaste publique que j'ouvrais ce blog.
+
+
+          Ce site s'addresse donc à un publique de tout niveau d'expérience. et
+          n'est surtout pas réservé aux développeurs / programmeurs / codeurs.
+          La priorité ici est de rendre les sujets simples et abordables par
+          n'importe qui, le seul pré-requis est la curiosité.
+
+
+          Pour chaque sujet abordé il y aura des articles de prise en main qui
+          expliquent comment aborder un sujet simplement, des articles de fond
+          expliquant le pourquoi du comment de certaines techniques, des trucs
+          et astuces divers.
+
+
+          Aujourd'hui je travaille dans une start-up et je jongle au quotidien
+          avec :
+
+           * \"Ruby\":http://www.ruby-lang.org/fr/
+             (et le framework \"Ruby on Rails\":http://rubyonrails.org/)
+
+           * \"JavaScript\":http://fr.wikipedia.org/wiki/JavaScript
+             (et les framework \"jQuery\":http://jquery.com/,
+              \"prototype\":www.prototypejs.org/ /
+              \"scriptaculous\":http://script.aculo.us/)
+
+           * \"(X)HTML\":http://fr.wikipedia.org/wiki/Hypertext_Markup_Language
+
+           * \"CSS\":http://fr.wikipedia.org/wiki/Feuilles_de_style_en_cascade
+
+           * \"GIT\":http://git-scm.com/
+
+           * Un peu de graphisme
+             (avec \"the Gimp\":http://www.gimp.org/ et
+              \"Inkscape\":http://www.inkscape.org/?lang=fr)
+
+
+          Vous trouverez ici en priorité des articles traitant de ces sujets.
+
+
+          Parallèlement j'ai découvert GNU / Linux et les logiciels libres,
+          ce qui m'a amené à promouvoir les standards ouverts pour le web. Mon
+          matériel personnel est piloté par des moutures d'Ubuntu. Vous ne
+          trouverez pas ici d'informations relatives à certaines technologies
+          privatisées comme Flash, Flex ou Silverlight.
+
+
+          Merci de votre attention, et bonne visite."
 --- # ==========================================================================
