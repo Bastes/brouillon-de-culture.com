@@ -33,4 +33,12 @@ module ApplicationHelper
     t value, :scope => [:views, self.controller_name]
   end
   alias :tws :translate_with_scope
+
+  def textilize(text) # overriding Rails method to remove hardbreaks
+    if text.blank?
+     "" 
+    else
+     textilized = RedCloth.new(text).to_html
+    end
+  end
 end
