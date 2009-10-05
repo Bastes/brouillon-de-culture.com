@@ -30,5 +30,5 @@
         $(this).animate({ opacity: 1 }, { duration: 60000, complete: function() {
           $(this).remove(); fluo_sprite(); } } ) } });
   };
-  $('body').animate({ opacity: 1 }, { duration: 1, complete: function() { fluo_sprite(); } });
+  $('body').animate({ opacity: 1 }, { duration: 1000, complete: function() { fluo_sprite(); } });
 }); })(jQuery);
