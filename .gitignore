@@ -5,6 +5,7 @@ doc/app
 config/database.yml
 db/*.sqlite*
 db/schema.rb
+vendor/gems
 *.swp
 .DS_Store
 .vimproject
