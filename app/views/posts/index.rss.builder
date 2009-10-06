@@ -10,8 +10,8 @@ xml.rss :version => '2.0' do
         xml.title post.title
         xml.description textilize(codify(post.text))
         xml.pubDate post.created_at.to_s(:rfc822)
-        xml.link formatted_post_url(post, :rss)
-        xml.guid formatted_post_url(post, :rss)
+        xml.link formatted_post_url(post, :html)
+        xml.guid formatted_post_url(post, :html)
       end
     end
   end
