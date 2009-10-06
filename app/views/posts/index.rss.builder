@@ -1,8 +1,8 @@
 xml.instruct! :xml, :version => '1.0'
 xml.rss :version => '2.0' do
   xml.channel do
-    xml.title "brouillon-de-culture.com FIXME"
-    xml.description "FIXME"
+    xml.title "Brouillon-de-Culture.com"
+    xml.description "Un petit blog pour jouer avec le HTML, les CSS, le JavaScript et le Ruby (et d'autres choses peut-être)."
     xml.link formatted_posts_url(:rss)
     
     for post in @posts
