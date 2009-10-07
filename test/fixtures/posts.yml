@@ -1,9 +1,5 @@
-# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
-
-one:
-  title: MyString
-  text: MyText
-
-two:
-  title: MyString
-  text: MyText
+<% 10.times do |i| %>
+filler_<%= i %>:
+  title: "filler #<%= i %>"
+  text: "this is just filler post number <%= i %>"
+<% end %>
