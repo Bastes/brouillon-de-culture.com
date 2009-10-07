@@ -1,5 +1,6 @@
 <% 10.times do |i| %>
 filler_<%= i %>:
+  keywords: <%= (0..i).to_a.collect { |j| "filler_#{j}" }.join ', ' %>
   title: "filler #<%= i %>"
   text: "this is just filler post number <%= i %>"
 <% end %>
