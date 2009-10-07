@@ -1,11 +1,6 @@
-# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
-
-one:
-  url: MyString
-  name: MyString
-  description: MyText
-
-two:
-  url: MyString
-  name: MyString
-  description: MyText
+<% 10.times do |i| %>
+filler_<%= i %>:
+  url: "http://imfillernumber<%= i %>.com"
+  name: "filler #<%= i %>"
+  description: "this is filler destination number <%= i %>"
+<% end %>

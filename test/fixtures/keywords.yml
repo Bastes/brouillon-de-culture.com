@@ -1,7 +1,4 @@
-# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
-
-one:
-  word: MyString
-
-two:
-  word: MyString
+<% 10.times do |i| %>
+filler_<%= i %>:
+  word: "filler #<%= i %>"
+<% end %>
