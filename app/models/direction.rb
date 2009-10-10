@@ -3,7 +3,6 @@ class Direction < ActiveRecord::Base
   validates_uniqueness_of :url
 
   named_scope :by_creation_date, :order => "created_at DESC"
-  named_scope :top, :offset => 0, :limit => 5
 
   def actual_name
     name.blank? ? url : name
