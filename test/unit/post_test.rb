@@ -42,4 +42,11 @@ class PostTest < ActiveSupport::TestCase
       created_at = post.created_at
     end
   end
+
+  test "keywords by words" do
+    post = Post.create :keywords_by_word => 'blah, bloh, bleh'
+    assert post.keywords.size == 3
+    assert post.keywords.map(&:word) == ['blah', 'bloh', 'bleh']
+    assert post.keywords_by_word.split(/, /) == ['blah', 'bloh', 'bleh']
+  end
 end
