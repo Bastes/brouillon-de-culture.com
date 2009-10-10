@@ -33,4 +33,13 @@ class PostTest < ActiveSupport::TestCase
     p = Post.create :title => 'fake title', :text => "blah blah blah"
     assert p.valid?
   end
+
+  test "order by creation date" do
+    posts = Post.by_creation_date.all
+    created_at = nil
+    posts.each do |post|
+      assert post.created_at <= created_at, "Should be ordered by creation date" if created_at
+      created_at = post.created_at
+    end
+  end
 end
