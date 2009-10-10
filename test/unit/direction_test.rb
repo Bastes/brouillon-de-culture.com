@@ -44,4 +44,14 @@ class DirectionTest < ActiveSupport::TestCase
     direction = Direction.new :name => 'url name', :url => 'http://blah.blah.com', :description => ''
     assert direction.actual_description == direction.actual_name, "Shoud return the actual name when the description's blank"
   end
+
+
+  test "order by creation date" do
+    directions = Direction.by_creation_date.all
+    created_at = nil
+    directions.each do |direction|
+      assert direction.created_at <= created_at, "Should be ordered by creation date" if created_at
+      created_at = direction.created_at
+    end
+  end
 end
