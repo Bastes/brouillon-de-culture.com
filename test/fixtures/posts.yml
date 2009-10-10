@@ -3,4 +3,6 @@ filler_<%= i %>:
   keywords: <%= (0..i).to_a.collect { |j| "filler_#{j}" }.join ', ' %>
   title: "filler #<%= i %>"
   text: "this is just filler post number <%= i %>"
+  created_at: "<%= (Time.now + (2 - (i % 5)).day).strftime "%Y-%m-%d %H:%M:%S" %>"
+  updated_at: "<%= (Time.now + (6 - (i % 4)).day).strftime "%Y-%m-%d %H:%M:%S" %>"
 <% end %>
