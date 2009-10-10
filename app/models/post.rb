@@ -7,7 +7,6 @@ class Post < ActiveRecord::Base
 
   named_scope :with_keywords, :include => :keywords
   named_scope :by_creation_date, :order => "created_at DESC"
-  named_scope :top, :offset => 0
 
   def self.per_page
     5
