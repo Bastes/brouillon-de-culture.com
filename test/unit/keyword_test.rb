@@ -31,4 +31,12 @@ class KeywordTest < ActiveSupport::TestCase
       posts = keyword.posts.count
     end
   end
+
+  test "only used" do
+    assert Keyword.all.count == 20, 'Should match all 20 keywords'
+    assert Keyword.only_used.all.count == 10, 'Should match only used keywords'
+    Keyword.only_used.all.each do |keyword|
+      assert keyword.posts.count > 0, 'Used keywords should have posts'
+    end
+  end
 end
