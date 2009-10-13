@@ -39,4 +39,8 @@ class KeywordTest < ActiveSupport::TestCase
       assert keyword.posts.count > 0, 'Used keywords should have posts'
     end
   end
+
+  test "top" do
+    assert Keyword.top.all.count == 5, "Should only get 5 keywords on top"
+  end
 end
