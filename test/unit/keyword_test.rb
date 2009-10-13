@@ -22,4 +22,13 @@ class KeywordTest < ActiveSupport::TestCase
     keyword = Keyword.create :word => 'another word'
     assert keyword.valid?
   end
+
+  test "order by importance" do
+    keywords = Keyword.by_importance.all
+    posts = nil
+    keywords.each do |keyword|
+      assert keyword.posts.count <= posts, 'Should be ordered by number of posts' if posts
+      posts = keyword.posts.count
+    end
+  end
 end
