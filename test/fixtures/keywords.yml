@@ -2,3 +2,8 @@
 filler_<%= i %>:
   word: "filler #<%= i %>"
 <% end %>
+
+<% 10.times do |i| %>
+empty_<%= i %>:
+  word: "empty #<%= i %>"
+<% end %>
