@@ -1,57 +1,80 @@
 require 'test_helper'
 
 class DirectionTest < ActiveSupport::TestCase
-  test "require url" do
-    direction = Direction.create
-    assert !direction.valid?, "Should not be valid without an url"
+  should_validate_presence_of :url
+  should_validate_uniqueness_of :url
 
-    direction = Direction.create :url => ''
-    assert !direction.valid?, "Should not be valid with a blank url"
+  context "A direction with " do
+    context "no name nor description" do
+      setup do
+        @directions = [
+          Direction.new(:url => 'http://fake.url.com'),
+          Direction.new(:url => 'http://fake.url.com', :name => ''),
+          Direction.new(:url => 'http://fake.url.com', :description => ''),
+          Direction.new(:url => 'http://fake.url.com', :name => '', :description => '') ]
+      end
 
-    direction = Direction.create :url => 'http://blah.blah.com'
-    assert direction.valid?
+      should "return the url as actual name" do
+        @directions.each do |direction|
+          assert direction.actual_name == direction.url
+        end
+      end
+      
+      should "return the url as actual description" do
+        @directions.each do |direction|
+          assert direction.actual_description == direction.url
+        end
+      end
+    end
+
+    context "a name" do
+      context "but not description" do
+        setup do
+          @directions = [
+            Direction.new(:url => 'http://fake.url.com', :name => 'fake name'),
+            Direction.new(:url => 'http://fake.url.com', :name => 'fake name', :description => '') ]
+        end
+
+        should "return the name as actual name" do
+          @directions.each do |direction|
+            assert direction.actual_name == direction.name
+          end
+        end
+        
+        should "return the name as actual description" do
+          @directions.each do |direction|
+            assert direction.actual_description == direction.name
+          end
+        end
+      end
+
+      context "and a description" do
+        setup do
+          @direction = Direction.new(:url => 'http://fake.url.com', :name => 'fake name', :description => 'blah blah')
+        end
+
+        should "return the name as actual name" do
+          assert @direction.actual_name == @direction.name
+        end
+
+        should "return the description as actual description" do
+          assert @direction.actual_description == @direction.description
+        end
+      end
+    end
   end
 
-  test "require an unique url" do
-    base = Direction.create :url => "http://blah.blah.com"
-    assert base.valid?
+  context "The whole list of directions ordered by creation date" do
+    setup do
+      @directions = Direction.by_creation_date.all
+    end
 
-    direction = Direction.create :url => "http://blah.blah.com"
-    assert !direction.valid?, "Should not be valid with a duplicate url"
-
-    direction = Direction.create :url => "http://another.one.com"
-    assert direction.valid?
-  end
-
-  test "actual name or url if none" do
-    direction = Direction.new :name => 'url name', :url => 'http://blah.blah.com'
-    assert direction.actual_name == direction.name, "Shoud return the name when the name's not blank"
-
-    direction = Direction.new :url => 'http://blah.blah.com'
-    assert direction.actual_name == direction.url, "Shoud return the url when there's no name"
-
-    direction = Direction.new :name => '', :url => 'http://blah.blah.com'
-    assert direction.actual_name == direction.url, "Shoud return the url when the name's blank"
-  end
-
-  test "description or actual name if none" do
-    direction = Direction.new :name => 'url name', :url => 'http://blah.blah.com', :description => 'blah blah blah'
-    assert direction.actual_description == direction.description, "Shoud return the description when the description's not blank"
-
-    direction = Direction.new :name => 'url name', :url => 'http://blah.blah.com'
-    assert direction.actual_description == direction.actual_name, "Shoud return the actual name when there's no description"
-
-    direction = Direction.new :name => 'url name', :url => 'http://blah.blah.com', :description => ''
-    assert direction.actual_description == direction.actual_name, "Shoud return the actual name when the description's blank"
-  end
-
-
-  test "order by creation date" do
-    directions = Direction.by_creation_date.all
-    created_at = nil
-    directions.each do |direction|
-      assert direction.created_at <= created_at, "Should be ordered by creation date" if created_at
-      created_at = direction.created_at
+    should "be ordered by creation date" do
+      created_at = nil
+      @directions.each do |direction|
+        assert direction.created_at <= created_at if created_at
+        created_at = direction.created_at
+      end
     end
   end
 end
