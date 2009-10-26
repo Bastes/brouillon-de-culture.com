@@ -1,46 +1,43 @@
 require 'test_helper'
 
 class KeywordTest < ActiveSupport::TestCase
-  test "require word" do
-    keyword = Keyword.create
-    assert !keyword.valid?, "Should not be valid without a word"
+  should_have_and_belong_to_many :posts
+  should_validate_presence_of :word
+  should_validate_uniqueness_of :word
 
-    keyword = Keyword.create :word => ''
-    assert !keyword.valid?, "Should not be valid with an empty word"
-    
-    keyword = Keyword.create :word => 'word'
-    assert keyword.valid?
-  end
+  context "The whole list of keywords ordered by importance" do
+    setup do
+      @keywords = Keyword.by_importance.all
+    end
 
-  test "require an unique word" do
-    base = Keyword.create :word => 'word'
-    assert base.valid?
-
-    keyword = Keyword.create :word => 'word'
-    assert !keyword.valid?, "Should not be valid with a duplicate word"
-
-    keyword = Keyword.create :word => 'another word'
-    assert keyword.valid?
-  end
-
-  test "order by importance" do
-    keywords = Keyword.by_importance.all
-    posts = nil
-    keywords.each do |keyword|
-      assert keyword.posts.count <= posts, 'Should be ordered by number of posts' if posts
-      posts = keyword.posts.count
+    should "be ordered by decreasing number of posts" do
+      posts = nil
+      @keywords.each do |keyword|
+        assert keyword.posts.count <= posts, 'Should be ordered by number of posts' if posts
+        posts = keyword.posts.count
+      end
     end
   end
 
-  test "only used" do
-    assert Keyword.all.count == 20, 'Should match all 20 keywords'
-    assert Keyword.only_used.all.count == 10, 'Should match only used keywords'
-    Keyword.only_used.all.each do |keyword|
-      assert keyword.posts.count > 0, 'Used keywords should have posts'
+  context "Only used keywords" do
+    setup do
+      @keywords = Keyword.only_used.all
+    end
+
+    should "have only used keywords" do
+      @keywords.each do |keyword|
+        assert keyword.posts.count > 0
+      end
     end
   end
 
-  test "top" do
-    assert Keyword.top.all.count == 5, "Should only get 5 keywords on top"
+  context "Top keywords" do
+    setup do
+      @keywords = Keyword.top.all
+    end
+
+    should "show only 5 keywords" do
+      assert @keywords.length == 5
+    end
   end
 end
