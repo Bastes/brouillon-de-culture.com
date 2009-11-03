@@ -36,3 +36,12 @@ class ActiveSupport::TestCase
 
   # Add more helper methods to be used by all tests here...
 end
+
+module ActionController
+  class TestCase
+    def login_as_admin
+      @request.session[:login] = ADMIN_LOGIN
+      @request.session[:password] = ADMIN_PASSWORD
+    end
+  end
+end
