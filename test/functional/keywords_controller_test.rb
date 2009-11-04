@@ -1,14 +1,7 @@
 require 'test_helper'
 
 class KeywordsControllerTest < ActionController::TestCase
-  should_route :get,    "/keywords",          :controller => :keywords, :action => :index
-  should_route :get,    "/keywords/new",      :controller => :keywords, :action => :new
-  should_route :post,   "/keywords",          :controller => :keywords, :action => :create
-  should_route :get,    "/keywords/1",        :controller => :keywords, :action => :show,    :id => 1
-  should_route :get,    "/keywords/1/edit",   :controller => :keywords, :action => :edit,    :id => 1
-  should_route :put,    "/keywords/1",        :controller => :keywords, :action => :update,  :id => 1
-  should_route :get,    "/keywords/1/remove", :controller => :keywords, :action => :remove,  :id => 1
-  should_route :delete, "/keywords/1",        :controller => :keywords, :action => :destroy, :id => 1
+  should_route_ajax_actions
 
   context "as visitor" do
     context "on GET to :index" do

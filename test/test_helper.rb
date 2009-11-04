@@ -43,5 +43,17 @@ module ActionController
       @request.session[:login] = ADMIN_LOGIN
       @request.session[:password] = ADMIN_PASSWORD
     end
+
+    def self.should_route_ajax_actions
+      route_base = controller_class.controller_name.to_sym
+      should_route :get,    "/#{route_base}",          :controller => route_base, :action => :index
+      should_route :get,    "/#{route_base}/new",      :controller => route_base, :action => :new
+      should_route :post,   "/#{route_base}",          :controller => route_base, :action => :create
+      should_route :get,    "/#{route_base}/1",        :controller => route_base, :action => :show,    :id => 1
+      should_route :get,    "/#{route_base}/1/edit",   :controller => route_base, :action => :edit,    :id => 1
+      should_route :put,    "/#{route_base}/1",        :controller => route_base, :action => :update,  :id => 1
+      should_route :get,    "/#{route_base}/1/remove", :controller => route_base, :action => :remove,  :id => 1
+      should_route :delete, "/#{route_base}/1",        :controller => route_base, :action => :destroy, :id => 1
+    end
   end
 end
