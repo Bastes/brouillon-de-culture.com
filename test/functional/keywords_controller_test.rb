@@ -31,18 +31,12 @@ class KeywordsControllerTest < ActionController::TestCase
       should_not_set_the_flash
     end
 
-    { "GET to :new" => lambda { get :new },
-      "GET to :edit" => lambda { get :edit, :id => Keyword.first.id },
-      "GET to :remove" => lambda { get :remove, :id => Keyword.first.id },
-      "POST to :create" => lambda { post :create },
-      "PUT to :update" => lambda { put :update, :id => Keyword.first.id },
-      "DELETE to :destroy" => lambda { delete :destroy, :id => Keyword.first.id } }.each do |description, action|
-      context description do
-        setup &action
-
-        should_redirect_to("the login url") { login_url }
-      end
-    end
+    should_be_kicked_out("GET to :new")        { get :new }
+    should_be_kicked_out("GET to :edit")       { get :edit, :id => Keyword.first.id }
+    should_be_kicked_out("GET to :remove")     { get :remove, :id => Keyword.first.id }
+    should_be_kicked_out("POST to :create")    { post :create }
+    should_be_kicked_out("PUT to :update")     { put :update, :id => Keyword.first.id }
+    should_be_kicked_out("DELETE to :destroy") { delete :destroy, :id => Keyword.first.id }
   end
 
   context "as admin" do

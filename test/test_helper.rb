@@ -55,5 +55,13 @@ module ActionController
       should_route :get,    "/#{route_base}/1/remove", :controller => route_base, :action => :remove,  :id => 1
       should_route :delete, "/#{route_base}/1",        :controller => route_base, :action => :destroy, :id => 1
     end
+
+    def self.should_be_kicked_out description, &action_block
+      context description do
+        setup &action_block
+
+        should_redirect_to("the login url") { login_url }
+      end
+    end
   end
 end
