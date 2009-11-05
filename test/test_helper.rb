@@ -63,5 +63,40 @@ module ActionController
         should_redirect_to("the login url") { login_url }
       end
     end
+
+    def self.should_do description, action_block, *characteristics, &more_assertions
+      characteristics = characteristics.first
+      characteristics ||= {}
+
+      context description do
+        setup &action_block
+
+        if characteristics.has_key? :assigned
+          characteristics[:assigned] = characteristics[:assigned].bind(self).call if characteristics[:assigned].is_a? Proc
+          characteristics[:assigned] = [characteristics[:assigned]] unless (characteristics[:assigned].is_a?(Array) or characteristics[:assigned].is_a?(Hash))
+          characteristics[:assigned].each do |assigned, expected|
+            if expected.nil?
+              should_assign_to assigned
+            else
+              should_assign_to assigned { expected }
+            end
+          end
+        end
+
+        should_respond_with characteristics[:response] if characteristics[:response]
+        should_render_template characteristics[:template] if characteristics[:template]
+        should_redirect_to(characteristics[:redirect].keys.first, &characteristics[:redirect].values.first) if characteristics[:redirect]
+
+        unless characteristics[:flash].nil?
+          if characteristics[:flash]
+            should_set_the_flash_to characteristics[:flash]
+          else
+            should_not_set_the_flash
+          end
+        end
+
+        more_assertions.bind(self).call if block_given?
+      end
+    end
   end
 end
