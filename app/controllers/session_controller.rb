@@ -1,4 +1,4 @@
-class SessionsController < ApplicationController
+class SessionController < ApplicationController
   before_filter :as_admin, :except => :new
 
   def new

@@ -2,10 +2,10 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :posts, :collection => { :hot => :get }, :member => { :remove => :get }
   map.resources :keywords, :collection => { :hot => :get }, :member => { :remove => :get }
   map.resources :directions, :collection => { :hot => :get }, :member => { :remove => :get }
-  map.resources :sessions
+  map.resource  :session, :controller => 'session', :only => [ :new, :create, :destroy ]
 
-  map.login   'login', :controller => 'sessions', :action => 'new'
-  map.logout  'logout', :controller => 'sessions', :action => 'destroy'
+  map.login 'login', :controller => 'session', :action => 'new'
+  map.logout 'logout', :controller => 'session', :action => 'destroy'
 
   map.bio 'bio.:format', :controller => 'statics', :action => 'bio'
 
