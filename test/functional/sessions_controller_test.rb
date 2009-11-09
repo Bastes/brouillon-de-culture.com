@@ -19,13 +19,22 @@ class SessionControllerTest < ActionController::TestCase
     context "with the proper credentials" do
       should_do("POST to :create", lambda { post :create, :login => ADMIN_LOGIN, :password => ADMIN_PASSWORD }, :redirect => { "the post's index page" => lambda { posts_url } }, :flash => /./) do
         should "keep the credentials in the session" do
-          # FIXME
+          assert session[:login] == ADMIN_LOGIN
+          assert session[:password] == ADMIN_PASSWORD
         end
       end
     end
   end
 
-  context "admin trying to logout" do
-    # FIXME 
+  context "as admin trying to logout" do
+    setup do
+      session[:login] = "anyone"
+      session[:password] = "anything"
+    end
+
+    should_do("DELETE to :destroy", lambda { delete :destroy }, :redirect => { "the post's index page" => lambda { login_url } }) do # FIXME : why isn't the flash set ?
+      should_set_session(:login) { nil }
+      should_set_session(:password) { nil }
+    end
   end
 end
