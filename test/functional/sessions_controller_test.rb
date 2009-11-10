@@ -27,10 +27,7 @@ class SessionControllerTest < ActionController::TestCase
   end
 
   context "as admin trying to logout" do
-    setup do
-      session[:login] = "anyone"
-      session[:password] = "anything"
-    end
+    setup { login_as_admin }
 
     should_do("DELETE to :destroy", lambda { delete :destroy }, :redirect => { "the post's index page" => lambda { login_url } }) do # FIXME : why isn't the flash set ?
       should_set_session(:login) { nil }
