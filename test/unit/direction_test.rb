@@ -16,13 +16,13 @@ class DirectionTest < ActiveSupport::TestCase
 
       should "return the url as actual name" do
         @directions.each do |direction|
-          assert direction.actual_name == direction.url
+          assert_equal direction.actual_name, direction.url
         end
       end
       
       should "return the url as actual description" do
         @directions.each do |direction|
-          assert direction.actual_description == direction.url
+          assert_equal direction.actual_description, direction.url
         end
       end
     end
@@ -37,13 +37,13 @@ class DirectionTest < ActiveSupport::TestCase
 
         should "return the name as actual name" do
           @directions.each do |direction|
-            assert direction.actual_name == direction.name
+            assert_equal direction.actual_name, direction.name
           end
         end
         
         should "return the name as actual description" do
           @directions.each do |direction|
-            assert direction.actual_description == direction.name
+            assert_equal direction.actual_description, direction.name
           end
         end
       end
@@ -54,11 +54,11 @@ class DirectionTest < ActiveSupport::TestCase
         end
 
         should "return the name as actual name" do
-          assert @direction.actual_name == @direction.name
+          assert_equal @direction.actual_name, @direction.name
         end
 
         should "return the description as actual description" do
-          assert @direction.actual_description == @direction.description
+          assert_equal @direction.actual_description, @direction.description
         end
       end
     end
@@ -72,7 +72,7 @@ class DirectionTest < ActiveSupport::TestCase
     should "be ordered by creation date" do
       created_at = nil
       @directions.each do |direction|
-        assert direction.created_at <= created_at if created_at
+        assert_operator direction.created_at, :<=, created_at if created_at
         created_at = direction.created_at
       end
     end

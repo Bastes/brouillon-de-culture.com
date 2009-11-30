@@ -14,7 +14,7 @@ class PostTest < ActiveSupport::TestCase
     should "be ordered by creation date" do
       created_at = nil
       @posts.each do |post|
-        assert post.created_at <= created_at if created_at
+        assert_operator post.created_at, :<=, created_at if created_at
         created_at = post.created_at
       end
     end
@@ -26,15 +26,15 @@ class PostTest < ActiveSupport::TestCase
     end
 
     should "show the right amount of keywords" do
-      assert @post.keywords.size == 3
+      assert_equal @post.keywords.size, 3
     end
 
     should "show these keywords" do
-      assert @post.keywords.map(&:word) == ['blah', 'bloh', 'bleh']
+      assert_equal @post.keywords.map(&:word), ['blah', 'bloh', 'bleh']
     end
 
     should "show these keywords by word" do
-      assert @post.keywords_by_word.split(/, /) == ['blah', 'bloh', 'bleh']
+      assert_equal @post.keywords_by_word.split(/, /), ['blah', 'bloh', 'bleh']
     end
   end
 end

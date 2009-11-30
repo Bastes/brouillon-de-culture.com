@@ -6,10 +6,10 @@ class DirectionsControllerTest < ActionController::TestCase
   context "as visitor" do
     should_do("on GET to :index", lambda { get :index }, :assigned => :directions, :response => :success, :template => :index, :flash => false) do
       should "show all directions ordered by date" do
-        assert assigns(:directions).length == 10
+        assert_equal assigns(:directions).length, 10
         date = nil
         assigns(:directions).each do |current|
-          assert current.created_at <= date if date
+          assert_operator current.created_at, :<=, date if date
           date = current.created_at
         end
       end
@@ -30,7 +30,7 @@ class DirectionsControllerTest < ActionController::TestCase
 
     should_do("on GET to :new", lambda { get :new }, :assigned => :direction, :response => :success, :template => :new, :flash => false) do
       should "provide an empty new direction" do
-        assert assigns(:direction).new_record?
+        assert assigns(:direction).new_record?, "this #{assigns(:direction)} should be a new post"
       end
     end
 
@@ -40,39 +40,39 @@ class DirectionsControllerTest < ActionController::TestCase
 
     should_do("on valid POST (to :create)", lambda { post :create, :direction => { :url => (@url = "blah blah"), :name => (@name = "blah blah blah blah"), :description => (@description = "blah blah blah blah blah blah") } }, :assigned => :direction, :redirect => { "the new direction's page" => lambda { assigns(:direction) } }, :flash => /./) do
       should "set the direction to the right url, name and description" do
-        assert assigns(:direction).url == @url
-        assert assigns(:direction).name == @name
-        assert assigns(:direction).description == @description
+        assert_equal assigns(:direction).url, @url
+        assert_equal assigns(:direction).name, @name
+        assert_equal assigns(:direction).description, @description
       end
     end
 
     should_do("on invalid POST (to :create)", lambda { post :create, :direction => { :url => '', :name => '', :description => '' } }, :assigned => :direction, :response => 422, :template => :new, :flash => false) do
       should "set the direction to the right url, name and description" do
-        assert assigns(:direction).url == ''
-        assert assigns(:direction).name == ''
-        assert assigns(:direction).description == ''
+        assert_equal assigns(:direction).url, ''
+        assert_equal assigns(:direction).name, ''
+        assert_equal assigns(:direction).description, ''
       end
     end
 
     should_do("on valid PUT (to :update)", lambda { put :update, :id => (@direction = Direction.first).id, :direction => { :url => (@url = "blah blah"), :name => (@name = "blah blah blah blah"), :description => (@description = "blah blah blah blah blah blah") } }, :assigned => :direction, :redirect => { "the new direction's page" => lambda { assigns(:put) } }, :flash => /./) do
       should "set the direction to the right url, name and description" do
-        assert assigns(:direction).url == @url
-        assert assigns(:direction).name == @name
-        assert assigns(:direction).description == @description
+        assert_equal assigns(:direction).url, @url
+        assert_equal assigns(:direction).name, @name
+        assert_equal assigns(:direction).description, @description
       end
     end
 
     should_do("on invalid PUT (to :update)", lambda { put :update, :id => (@direction = Direction.first).id, :direction => { :url => '', :name => '', :description => '' } }, :assigned => :direction, :response => 422, :template => :edit, :flash => false) do
       should "set the direction to the right url, name and description" do
-        assert assigns(:direction).url == ''
-        assert assigns(:direction).name == ''
-        assert assigns(:direction).description == ''
+        assert_equal assigns(:direction).url, ''
+        assert_equal assigns(:direction).name, ''
+        assert_equal assigns(:direction).description, ''
       end
     end
 
     should_do("on DELETE (to :destroy)", lambda { delete :destroy, :id => (@direction = Direction.first).id }, :redirect => { "the directions page" => lambda { directions_url } }, :flash => /./) do
       should "have deleted the direction" do
-        assert ! Direction.exists?(@direction.id)
+        assert ! Direction.exists?(@direction.id), "the direction shouldn't exist anymore"
       end
     end
   end

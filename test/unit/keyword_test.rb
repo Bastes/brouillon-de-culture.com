@@ -13,7 +13,7 @@ class KeywordTest < ActiveSupport::TestCase
     should "be ordered by decreasing number of posts" do
       posts = nil
       @keywords.each do |keyword|
-        assert keyword.posts.count <= posts, 'Should be ordered by number of posts' if posts
+        assert_operator keyword.posts.count, :<=, posts if posts
         posts = keyword.posts.count
       end
     end
@@ -26,7 +26,7 @@ class KeywordTest < ActiveSupport::TestCase
 
     should "have only used keywords" do
       @keywords.each do |keyword|
-        assert keyword.posts.count > 0
+        assert_operator keyword.posts.count, :>, 0
       end
     end
   end
@@ -37,7 +37,7 @@ class KeywordTest < ActiveSupport::TestCase
     end
 
     should "show only 5 keywords" do
-      assert @keywords.length == 5
+      assert_equal @keywords.length, 5
     end
   end
 end

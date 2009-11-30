@@ -6,10 +6,10 @@ class PostsControllerTest < ActionController::TestCase
   context "as visitor" do
     should_do("on GET to :index", lambda { get :index }, :assigned => :posts, :response => :success, :template => :index, :flash => false) do
       should "show 5 posts ordered by date" do
-        assert assigns(:posts).length == 5
+        assert_equal assigns(:posts).length, 5
         date = nil
         assigns(:posts).each do |current|
-          assert current.created_at <= date if date
+          assert_operator current.created_at, :<=, date if date
           date = current.created_at
         end
       end
@@ -30,7 +30,7 @@ class PostsControllerTest < ActionController::TestCase
 
     should_do("on GET to :new", lambda { get :new }, :assigned => :post, :response => :success, :template => :new, :flash => false) do
       should "provide an empty new post" do
-        assert assigns(:post).new_record?
+        assert assigns(:post).new_record?, "this #{assigns(:post).inspect} post should be a new record"
       end
     end
 
@@ -40,35 +40,35 @@ class PostsControllerTest < ActionController::TestCase
 
     should_do("on valid POST (to :create)", lambda { post :create, :post => { :title => (@title = "blah blah"), :text => (@text = "blah blah blah blah") } }, :assigned => :post, :redirect => { "the new post's page" => lambda { assigns(:post) } }, :flash => /./) do
       should "set the post to the right title and text" do
-        assert assigns(:post).title == @title
-        assert assigns(:post).text == @text
+        assert_equal assigns(:post).title, @title
+        assert_equal assigns(:post).text, @text
       end
     end
 
     should_do("on invalid POST (to :create)", lambda { post :create, :post => { :title => '', :text => '' } }, :assigned => :post, :response => 422, :template => :new, :flash => false) do
       should "set the post to the right title and text" do
-        assert assigns(:post).title == ''
-        assert assigns(:post).text == ''
+        assert_equal assigns(:post).title, ''
+        assert_equal assigns(:post).text, ''
       end
     end
 
     should_do("on valid PUT (to :update)", lambda { put :update, :id => (@post = Post.first).id, :post => { :title => (@title = "blah blah"), :text => (@text = "blah blah blah blah") } }, :assigned => :post, :redirect => { "the new post's page" => lambda { assigns(:put) } }, :flash => /./) do
       should "set the post to the right title and text" do
-        assert assigns(:post).title == @title
-        assert assigns(:post).text == @text
+        assert_equal assigns(:post).title, @title
+        assert_equal assigns(:post).text, @text
       end
     end
 
     should_do("on invalid PUT (to :update)", lambda { put :update, :id => (@post = Post.first).id, :post => { :title => '', :text => '' } }, :assigned => :post, :response => 422, :template => :edit, :flash => false) do
       should "set the post to the right title and text" do
-        assert assigns(:post).title == ''
-        assert assigns(:post).text == ''
+        assert_equal assigns(:post).title, ''
+        assert_equal assigns(:post).text, ''
       end
     end
 
     should_do("on DELETE (to :destroy)", lambda { delete :destroy, :id => (@post = Post.first).id }, :redirect => { "the posts page" => lambda { posts_url } }, :flash => /./) do
       should "have deleted the post" do
-        assert ! Post.exists?(@post.id)
+        assert ! Post.exists?(@post.id), "the post shouldn't exist anymore"
       end
     end
   end
